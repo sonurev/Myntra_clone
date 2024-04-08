@@ -52,7 +52,7 @@ app.post('/register', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-  const sql = " SELECT * FROM login WHERE email = ?";
+  const sql = "SELECT * FROM login WHERE email = ?";
 
   db.query(sql, [req.body.email], (err, data) => {
     if (err) return res.json({ Error: "Login error in server" });
@@ -70,7 +70,6 @@ app.post('/login', (req, res) => {
     } else {
       return res.json({ Error: "No email existted" });
     }
-
   });
 });
 
