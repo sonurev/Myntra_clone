@@ -1,4 +1,5 @@
 import Product from "../models/product.models.js";
+import { ProductSchema } from "../types.js";
 import { deleteFile } from "../utils/file.js";
 
 
@@ -42,8 +43,18 @@ const getProduct = async (req, res, next) => {
 };
 
 const createProduct = async (req, res, next) => {
+
+  const productPayload = req.body;
+  const parsedPayload = ProductSchema.safeParse(productPayload);
+  if(!parsedPayload.success){
+    res.status(411).json({
+      msg: "You sent the wrong inputs",
+    });
+    return;
+  }
+
   try {
-    const { name, image, description, brand, category, price, countInStock } =
+    const { name, image, description, brand, category, current_price,original_price, countInStock } =
       req.body;
     console.log(req.file);
     const product = new Product({
@@ -53,7 +64,8 @@ const createProduct = async (req, res, next) => {
       description,
       brand,
       category,
-      price,
+      current_price,
+      original_price,
       countInStock
     });
     const createdProduct = await product.save();
@@ -65,8 +77,16 @@ const createProduct = async (req, res, next) => {
 };
 
 const updateProduct = async (req, res, next) => {
+  const productPayload = req.body;
+  const parsedPayload = ProductSchema.safeParse(productPayload);
+  if(!parsedPayload.success){
+    res.status(411).json({
+      msg: "You sent the wrong inputs",
+    });
+    return;
+  }
   try {
-    const { name, image, description, brand, category, price, countInStock } =
+    const { name, image, description, brand, category, current_price,original_price, countInStock } =
       req.body;
 
     const product = await Product.findById(req.params.id);
@@ -84,7 +104,8 @@ const updateProduct = async (req, res, next) => {
     product.description = description || product.description;
     product.brand = brand || product.brand;
     product.category = category || product.category;
-    product.price = price || product.price;
+    product.current_price = current_price || product.current_price;
+    product.original_price = original_price || product.original_price;
     product.countInStock = countInStock || product.countInStock;
 
     const updatedProduct = await product.save();
@@ -109,7 +130,7 @@ const deleteProduct = async (req, res, next) => {
       throw new Error('Product not found!');
     }
     await Product.deleteOne({ _id: product._id });
-    deleteFile(product.image); // Remove upload file
+    // deleteFile(product.image); // Remove upload file
 
     res.status(200).json({ message: 'Product deleted' });
   } catch (error) {

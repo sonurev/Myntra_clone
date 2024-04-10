@@ -11,7 +11,7 @@ function SignUp() {
 
     // Now you can proceed with your axios.post() or fetch() logic
 
-    axios.post("http://localhost:8081/register", JSON.stringify(postData), {
+    axios.post("http://localhost:8000/api/users/signup", JSON.stringify(postData), {
       headers: { "Content-Type": "application/json" },
     }).then(res => {
       if (res.data.Status === "Success") {

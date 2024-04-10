@@ -29,47 +29,43 @@ function BagleftBox({ baglist }) {
           &nbsp;&nbsp; Available offers
         </div>
         <div>
-          <ul
-            className="Text Discounts"
-            style={{ listStyleType: "disc" }}
-          >
+          <ul className="Text Discounts" style={{ listStyleType: "disc" }}>
             <li className="offerlist Text">
               7.5% Instant Discount on every spends with Myntra Kotak
             </li>
             <li className={`offerlistv Text ${seeMore && "Hide"}`}>
-              Up to ₹200 Cashback on Paytm UPI Transactions on a minimum
-              spend of ₹1,000. TCA
+              Up to ₹200 Cashback on Paytm UPI Transactions on a minimum spend
+              of ₹1,000. TCA
             </li>
             <li className={`offerlistv Text ${seeMore && "Hide"}`}>
-              Up to ₹1,000 Cashback on CRED pay UPI (Android Devices only)
-              on a minimum spend of ₹1,000. TCA
+              Up to ₹1,000 Cashback on CRED pay UPI (Android Devices only) on a
+              minimum spend of ₹1,000. TCA
             </li>
             <li className={`offerlistv Text ${seeMore && "Hide"}`}>
-              Flat ₹30 Cashback on Freecharge UPI (Android Devices only)
-              on a minimum spend of ₹1,999. TCA
+              Flat ₹30 Cashback on Freecharge UPI (Android Devices only) on a
+              minimum spend of ₹1,999. TCA
             </li>
             <li className={`offerlistv Text ${seeMore && "Hide"}`}>
-              Up to ₹250 Cashback on First ever Simpl Transaction on
-              Myntra on a minimum spend of ₹1,499. TCA
+              Up to ₹250 Cashback on First ever Simpl Transaction on Myntra on a
+              minimum spend of ₹1,499. TCA
             </li>
             <li className={`offerlistv Text ${seeMore && "Hide"}`}>
-              Get ₹150 Brand Voucher on minimum spend of ₹1,000 with
-              Payzapp wallet
+              Get ₹150 Brand Voucher on minimum spend of ₹1,000 with Payzapp
+              wallet
             </li>
             <li className={`offerlistv Text ${seeMore && "Hide"}`}>
-              Flat ₹75 Cashback on First Ever Mobikwik Wallet transaction
-              on Myntra on a min spend of ₹999. Use Code MBKNEW on
-              Mobikwik. TCA
+              Flat ₹75 Cashback on First Ever Mobikwik Wallet transaction on
+              Myntra on a min spend of ₹999. Use Code MBKNEW on Mobikwik. TCA
             </li>
             <li className={`offerlistv Text ${seeMore && "Hide"}`}>
               <span>
-                Get upto 15% Cashback on Mobikwik Wallet transaction on a
-                min spend of ₹1,500. Use Code MBK15 on Mobikwik. TCA
+                Get upto 15% Cashback on Mobikwik Wallet transaction on a min
+                spend of ₹1,500. Use Code MBK15 on Mobikwik. TCA
               </span>
             </li>
             <li className={`offerlistv Text ${seeMore && "Hide"}`}>
-              Flat ₹100 on Airtel Payments Bank transactions on a min
-              spend of ₹1,000. TCA
+              Flat ₹100 on Airtel Payments Bank transactions on a min spend of
+              ₹1,000. TCA
             </li>
           </ul>
           {seeMore ? (
@@ -99,11 +95,13 @@ function BagleftBox({ baglist }) {
           <span>MOVE TO WISHLIST</span>
         </div>
       </div>
-      {baglist.map((item) => <BagCard key={item.id} item={item} />)}
+      {baglist.map((item) => (
+        <BagCard key={item._id} item={item} />
+      ))}
 
       {/* <BagCard /> */}
     </div>
-  )
+  );
 }
 
-export default BagleftBox
+export default BagleftBox;

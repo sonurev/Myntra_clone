@@ -8,10 +8,10 @@ const BagSlice = createSlice({
       state.push(action.payload);
     },
     removeItem: (state, action) => {
-      return state = state.filter((item) => item.id !== action.payload);
+      return state = state.filter((item) => item._id !== action.payload);
     },
     updateQty: (state, action) => {
-      const itemToUpdate = state.find((item) => item.id === action.payload.id);
+      const itemToUpdate = state.find((item) => item._id === action.payload._id);
       if (itemToUpdate && itemToUpdate.Qty !== action.payload.Qty) {
         itemToUpdate.Qty = action.payload.Qty;
       }

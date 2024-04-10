@@ -16,13 +16,13 @@ function FetchItems() {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    fetch("http://localhost:8080/items", { signal })
+    fetch("http://localhost:8000/api/products", { signal })
       .then((res) => res.json())
-      .then(({ items }) => {
-        console.log(items[0]);
+      .then(({ products }) => {
+        console.log(products[0]);
         dispatch(fetchStatusActions.markFetchDone());
         dispatch(fetchStatusActions.markFetchingFinished());
-        dispatch(itemsActions.addInitialItems(items[0]));
+        dispatch(itemsActions.addInitialItems(products[0]));
       })
       .catch((error) => {
         // Handle errors here

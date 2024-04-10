@@ -11,7 +11,9 @@ function WishList() {
         My Wishlist <span>({wishlist.length}) Items</span>
       </div>
       <div className="wishlistContainer">
-        {wishlist.map((item) => <WishListCard key={item.id} item={item} />)}
+        {wishlist.map((item) => (
+          <WishListCard key={item._id} item={item} />
+        ))}
       </div>
     </div>
   );

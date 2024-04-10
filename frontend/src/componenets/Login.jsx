@@ -15,7 +15,7 @@ function Login() {
     const postData = Object.fromEntries(formData);
 
     // Now you can proceed with your axios.post() or fetch() logic
-    axios.post("http://localhost:8081/login", JSON.stringify(postData), {
+    axios.post("http://localhost:8000/api/users/login", JSON.stringify(postData), {
       headers: { "Content-Type": "application/json" },
     }).then(res => {
       if (res.data.Status === "Success") {

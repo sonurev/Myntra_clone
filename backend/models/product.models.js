@@ -34,8 +34,14 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    // Price of the product
-    price: {
+    // current Price of the product
+    current_price: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+    // original price of the product
+    original_price: {
       type: Number,
       required: true,
       default: 0

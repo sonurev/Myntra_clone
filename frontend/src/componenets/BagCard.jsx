@@ -17,16 +17,26 @@ function BagCard({ item }) {
       </div>
 
       <div className="infoB">
-        <div className="brandB Text-2">{item.company}</div>
-        <div className="discription Text-2">
-          {item.item_name}
-        </div>
-        <div className="soldBy">Sold by: {item.company}</div>
+        <div className="brandB Text-2">{item.brand}</div>
+        <div className="discription Text-2">{item.item_name}</div>
+        <div className="soldBy">Sold by: {item.brand}</div>
         <div className="SizeQty">
           <span className="Size Text-2">Size: M </span>
           <span className="Text-2">
             <label htmlFor="dropdown">Qty:</label>
-            <select id="dropdown" name="Qty" ref={quantity} onClick={() => dispatch(bagActions.updateQty({ Qty: quantity.current.value, id: item.id }))}>
+            <select
+              id="dropdown"
+              name="Qty"
+              ref={quantity}
+              onClick={() =>
+                dispatch(
+                  bagActions.updateQty({
+                    Qty: quantity.current.value,
+                    id: item._id,
+                  })
+                )
+              }
+            >
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -42,19 +52,27 @@ function BagCard({ item }) {
         </div>
 
         <div className="price-box">
-          <span className="price">Rs. {item.current_price * item.Qty}&nbsp;</span>
-          <span className="original-price">Rs. {item.original_price * item.Qty}&nbsp;</span>
-          <span className="discount">({item.discount_percentage}% OFF)</span>
+          <span className="price">
+            Rs. {item.current_price * item.Qty}&nbsp;
+          </span>
+          <span className="original-price">
+            Rs. {item.original_price * item.Qty}&nbsp;
+          </span>
+          {/* <span className="discount">({item.discount_percentage}% OFF)</span> */}
         </div>
 
-        <div className="return Text">
-          <FaClockRotateLeft /> <strong> {item.return_period} days </strong> return available
-        </div>
+        {/* <div className="return Text">
+          <FaClockRotateLeft /> <strong> {item.return_period} days </strong>{" "}
+          return available
+        </div> */}
         <div className="deliver Text">
           <IoMdCheckmark color="#26BF21" /> Delivery by{" "}
-          <strong>{item.delivery_date}</strong>
+          {/* <strong>{item.delivery_date}</strong> */}
         </div>
-        <button className="deleteB" onClick={() => dispatch(bagActions.removeItem(item.id))}>
+        <button
+          className="deleteB"
+          onClick={() => dispatch(bagActions.removeItem(item._id))}
+        >
           <RxCross2 size={24} color="#5E645D" />
         </button>
       </div>

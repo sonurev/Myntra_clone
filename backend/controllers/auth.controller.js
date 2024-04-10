@@ -1,8 +1,20 @@
 import bcrypt from "bcryptjs";
 import User from "../models/user.models.js";
 import generateTokenAndSetCookie from "../utils/generateToken.js";
+import { LoginSchema, SignupSchema } from "../types.js"
 
 export const signup = async (req, res) => {
+
+	const signupPayload = req.body;
+	const parsedPayload = SignupSchema.safeParse(signupPayload);
+
+	if (!parsedPayload.success) {
+    res.status(411).json({
+      msg: "You sent the wrong inputs",
+    });
+    return;
+  }
+
 	try {
 		const { fullName, email, password,mobileNumber} = req.body;
 
@@ -50,6 +62,16 @@ export const signup = async (req, res) => {
 };
 
 export const login = async (req, res) => {
+	const loginPayload = req.body;
+	const parsedpayload = LoginSchema.safeParse(loginPayload);
+
+	if(!parsedPayload.success){
+		res.status(411).json({
+      msg: "You sent the wrong inputs",
+    });
+    return;
+	}
+
 	try {
 		const { email, password } = req.body;
 		const user = await User.findOne({ email });

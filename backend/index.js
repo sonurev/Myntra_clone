@@ -11,7 +11,7 @@ app.use(cors());
 app.use(cookieParser());
 
 app.use("/api/users", authRoutes);
-app.use("/api/products",productRoutes);
+app.use("/api/products", productRoutes);
 
 
 const PORT = process.env.PORT || 5000;

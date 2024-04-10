@@ -11,7 +11,7 @@ import protectRoute from "../middlewares/protectRoute.js";
 const router = express.Router();
 
 
-router.get('/',protectRoute,getProducts);
+router.get('/',getProducts);
 
 router.get('/:id',protectRoute,getProduct);
 

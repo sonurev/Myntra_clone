@@ -16,17 +16,18 @@ function Item({ item }) {
     >
       <div className="imgContainer">
         <img src={item.image} alt="" className="image" />
-        <div className="rating">
+        {/* <div className="rating">
           <span>{item.rating.stars}</span> <FaStar color="green" size={12} />
           <span>&nbsp;| {item.rating.count}</span>
-        </div>
+        </div> */}
       </div>
       <div className="product">
         {mouseEnter ? <ItemBtn item={item}/> : <ItemInfo item={item} />}
         <div className="price-box">
           <span className="price">Rs. {item.current_price}&nbsp;</span>
           <span className="original-price">Rs. {item.original_price}&nbsp;</span>
-          <span className="discount">({item.discount_percentage}% OFF)</span>
+          <span className="original-price">Rs. {item.price}&nbsp;</span>
+          {/* <span className="discount">({item.discount_percentage}% OFF)</span> */}
         </div>
       </div>
     </div>
